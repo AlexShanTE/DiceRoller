@@ -1,4 +1,4 @@
-package com.alex.sid.shante.diceroller
+package com.alex.sid.shante.diceroller.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
