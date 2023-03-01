@@ -9,14 +9,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.alex.sid.shante.diceroller.R
 import com.alex.sid.shante.diceroller.domain.models.D6
 import com.alex.sid.shante.diceroller.domain.models.Dice
+import com.alex.sid.shante.diceroller.domain.models.DiceType
 
 @Composable
 fun DiceWithImage(
-    dice: Dice,
     modifier: Modifier = Modifier,
+    dice: Dice
 ) {
+
     val imageResource = dice.imageList[dice.currentValue - 1]
+
+    //todo setup different dice
+    when (dice.diceType) {
+        DiceType.D6() -> {}
+        DiceType.D3() -> {}
+        DiceType.D12() -> {}
+        DiceType.D20() -> {}
+        DiceType.Custom() -> {}
+        else -> {}
+    }
+
     Image(
+        modifier = modifier,
         painter = painterResource(imageResource),
         contentDescription = stringResource(R.string.image)
     )
@@ -25,5 +39,5 @@ fun DiceWithImage(
 @Preview(showBackground = true)
 @Composable
 fun DiceWithImagePreview() {
-    DiceWithImage(D6())
+    DiceWithImage(dice = D6())
 }
