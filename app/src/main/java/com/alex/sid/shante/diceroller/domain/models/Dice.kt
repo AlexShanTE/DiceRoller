@@ -6,7 +6,7 @@ sealed class Dice {
     abstract val title: String
     abstract val currentValue: Int
     abstract val imageList: List<Int>
-    abstract fun copy(currentValue: Int, imageList: List<Int>): Dice
+    abstract fun copy(currentValue: Int): Dice
 }
 
 data class D6(
@@ -21,7 +21,7 @@ data class D6(
         R.drawable.dice_6
     )
 ) : Dice() {
-    override fun copy(currentValue: Int, imageList: List<Int>): Dice =
+    override fun copy(currentValue: Int): Dice =
         copy(title = title, currentValue = currentValue, imageList = imageList)
 }
 
@@ -34,7 +34,7 @@ data class D3(
         R.drawable.dice_3
     )
 ) : Dice() {
-    override fun copy(currentValue: Int, imageList: List<Int>): Dice =
+    override fun copy(currentValue: Int): Dice =
         copy(title = title, currentValue = currentValue, imageList = imageList)
 }
 

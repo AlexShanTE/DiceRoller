@@ -10,6 +10,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,11 +27,15 @@ fun GameScreen(
     modifier: Modifier = Modifier,
     gameViewModel: GameViewModel = viewModel()
 ) {
+
+    val gameState by gameViewModel.state.collectAsState()
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Text(text = "Total : ${gameState.total}")
         GameBoard() { diceIndex ->
             gameViewModel.rollDice(diceIndex)
         }
@@ -38,7 +44,9 @@ fun GameScreen(
             modifier = modifier
                 .width(150.dp)
                 .height(50.dp),
-            onClick = { gameViewModel.rollThemAll() },
+            onClick = {
+                gameViewModel.rollThemAll()
+            },
             colors = ButtonDefaults.textButtonColors(backgroundColor = Color.Black)
         ) {
             Text(

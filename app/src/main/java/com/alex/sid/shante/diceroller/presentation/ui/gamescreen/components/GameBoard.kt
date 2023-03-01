@@ -26,8 +26,7 @@ fun GameBoard(
     gameViewModel: GameViewModel = viewModel(),
     onDiceClicked: (Int) -> Unit,
     ) {
-    val gameState by gameViewModel.uiState.collectAsState()
-
+    val gameState by gameViewModel.state.collectAsState()
     val diceList = gameState.diceList
 
     Column(

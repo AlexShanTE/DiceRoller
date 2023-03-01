@@ -2,6 +2,9 @@ package com.alex.sid.shante.diceroller.presentation.ui.gamescreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.alex.sid.shante.diceroller.domain.models.Dice
+import com.alex.sid.shante.diceroller.domain.repositories.GameRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,17 +13,46 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
-class GameViewModel : ViewModel() {
+@HiltViewModel
+class GameViewModel @Inject constructor(
+    private val repository: GameRepository
+) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(GameState())
-    val uiState: StateFlow<GameState> = _uiState.asStateFlow()
+    private val diceList by repository.diceList::value
+
+    private val _state = MutableStateFlow(GameState(diceList = diceList))
+    val state: StateFlow<GameState> = _state.asStateFlow()
+
+    fun addDice() {
+        repository.addDice()
+        updateUi()
+    }
+
+    fun removeDice(index: Int) {
+        repository.removeDice(index)
+        updateUi()
+
+    }
+
+    fun editDice(index: Int, dice: Dice) {
+        repository.editDice(index, dice)
+        updateUi()
+    }
+
+    private fun updateUi() {
+        _state.update { state ->
+            val total = diceList.sumOf { it.currentValue }
+            state.copy(diceList = diceList, total = total)
+        }
+    }
 
     fun rollThemAll() {
-        uiState.value.diceList.forEachIndexed { index, _ ->
+        diceList.forEachIndexed { index, _ ->
             rollDice(index)
         }
     }
@@ -28,17 +60,19 @@ class GameViewModel : ViewModel() {
     fun rollDice(index: Int) {
         tickerFlow(period = 50.milliseconds, duration = 1.seconds)
             .onEach { period ->
-                _uiState.update { currentState ->
-                    val newDiceList = currentState.diceList.mapIndexed { i, dice ->
-                        if (i == index) dice.copy(
-                            currentValue = (0 until dice.imageList.size).random(),
-                            imageList = dice.imageList
-                        ) else dice
-                    }
-                    currentState.copy(diceList = newDiceList)
-                }
+                val dice = diceList[index]
+                editDice(
+                    index,
+                    dice.copy(
+                        currentValue = (1..dice.imageList.size).random(),
+                    )
+                )
             }
-            .launchIn(viewModelScope) // or lifecycleScope or other
+            .launchIn(viewModelScope) // lifecycleScope or other
+    }
+
+    fun resetGame() {
+        repository.diceList.value
     }
 
     private fun tickerFlow(
