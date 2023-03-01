@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">DiceRoller</string>
+
+    <!--GAME SCREEN-->
+    <string name="roll">Roll</string>
+    <string name="setup_dice">Setup dice</string>
+    <string name="total">Total: %1$s</string>
+    <!--content descriptions-->
+    <string name="image">Dice image</string>
+
+
+    <!--DICE SETTINGS DRAWER-->
+    <string name="dice_settings">DiceSettings</string>
+    <string name="add_dice">Add Dice</string>
+    <string name="type">Type</string>
+    <string name="border_color">Border Color</string>
+    <string name="dot_color">Dot Color</string>
+    <string name="remove_dice">Remove dice</string>
+    <string name="show_options">Show options</string>
+
+
 </resources>
