@@ -35,8 +35,8 @@ import com.alex.sid.shante.diceroller.domain.models.Dice
 import com.alex.sid.shante.diceroller.domain.models.DiceSettings
 import com.alex.sid.shante.diceroller.presentation.ui.common.GradientButton
 import com.alex.sid.shante.diceroller.presentation.ui.gamescreen.components.GameBoard
-import com.alex.sid.shante.diceroller.presentation.ui.gamescreen.drawer.DrawerBody
-import com.alex.sid.shante.diceroller.presentation.ui.gamescreen.drawer.DrawerHeader
+import com.alex.sid.shante.diceroller.presentation.ui.gamescreen.diceSettingsDrawer.DrawerBody
+import com.alex.sid.shante.diceroller.presentation.ui.gamescreen.diceSettingsDrawer.DrawerHeader
 import com.alex.sid.shante.diceroller.ui.theme.minionVariableConcept
 import kotlinx.coroutines.launch
 
@@ -87,10 +87,9 @@ fun GameScreen(
                         diceList = gameState.diceList,
                         onRemoveDiceClicked = { index -> gameViewModel.removeDice(index) },
                         onDiceTypeChanged = { index, type ->
-                            val newDice = diceSettings.diceList().find { it.diceType == type } ?: Dice.D6dots()
+                            val newDice = diceSettings.diceList().find { it.diceType == type }
+                                ?: Dice.D6dots()
                             val oldDice = gameState.diceList[index]
-                            println("NEW DICE TYPE IS ${newDice.diceType.title}")
-                            println("OLD DICE TYPE IS ${oldDice.diceType.title}")
                             if (newDice.diceType.title !== oldDice.diceType.title) {
                                 gameViewModel.editDice(
                                     index, newDice.makeCopy(

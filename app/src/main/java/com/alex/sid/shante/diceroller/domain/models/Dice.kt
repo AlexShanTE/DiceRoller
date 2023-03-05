@@ -11,7 +11,15 @@ sealed class Dice {
     abstract val diceDotColor: DiceDotColor
     abstract val imageList: List<Int>
 
-    abstract fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice
+    abstract fun makeCopy(
+        diceType: DiceType,
+        currentValue: Int,
+        maxValue: Int,
+        diceColor: DiceColor,
+        diceEdgeColor: DiceEdgeColor,
+        diceDotColor: DiceDotColor,
+        imageList: List<Int>
+    ): Dice
 
     data class D4(
         override val diceType: DiceType = DiceType.D4(),
@@ -27,8 +35,24 @@ sealed class Dice {
             R.drawable.d4_4
         )
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            D4(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            D4(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 
     data class D6dots(
@@ -47,8 +71,24 @@ sealed class Dice {
             R.drawable.d6_dots_6
         )
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            D6dots(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            D6dots(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 
     data class D6numbers(
@@ -67,8 +107,24 @@ sealed class Dice {
             R.drawable.d6_numbers_6
         )
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            D6numbers(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            D6numbers(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 
     data class D8(
@@ -89,8 +145,24 @@ sealed class Dice {
             R.drawable.d8_8
         )
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            D8(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            D8(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 
     data class D10(
@@ -113,8 +185,24 @@ sealed class Dice {
             R.drawable.d10_10,
         )
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            D10(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            D10(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 
     data class D12(
@@ -139,8 +227,24 @@ sealed class Dice {
             R.drawable.d12_12,
         )
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            D12(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            D12(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 
     data class D20(
@@ -173,8 +277,24 @@ sealed class Dice {
             R.drawable.d20_20,
         )
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            D20(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            D20(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 
     data class Custom(
@@ -186,8 +306,24 @@ sealed class Dice {
         override val diceDotColor: DiceDotColor = DiceDotColor.Black(),
         override val imageList: List<Int> = emptyList()
     ) : Dice() {
-        override fun makeCopy(diceType: DiceType, currentValue: Int, maxValue: Int, diceColor: DiceColor, diceEdgeColor: DiceEdgeColor, diceDotColor: DiceDotColor, imageList: List<Int>): Dice =
-            Custom(diceType = diceType, currentValue = currentValue, maxValue = maxValue, diceColor = diceColor, diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor, imageList = imageList)
+        override fun makeCopy(
+            diceType: DiceType,
+            currentValue: Int,
+            maxValue: Int,
+            diceColor: DiceColor,
+            diceEdgeColor: DiceEdgeColor,
+            diceDotColor: DiceDotColor,
+            imageList: List<Int>
+        ): Dice =
+            Custom(
+                diceType = diceType,
+                currentValue = currentValue,
+                maxValue = maxValue,
+                diceColor = diceColor,
+                diceEdgeColor = diceEdgeColor,
+                diceDotColor = diceDotColor,
+                imageList = imageList
+            )
     }
 }
 
@@ -206,7 +342,14 @@ sealed class DiceType(open val title: String) {
 class DiceSettings {
 
     private val diceList: List<Dice> = listOf(
-        Dice.D4(), Dice.D6dots(),Dice.D6numbers(), Dice.D8(), Dice.D10(), Dice.D12(), Dice.D20(), Dice.Custom()
+        Dice.D4(),
+        Dice.D6dots(),
+        Dice.D6numbers(),
+        Dice.D8(),
+        Dice.D10(),
+        Dice.D12(),
+        Dice.D20(),
+        Dice.Custom()
     )
     private val diceTypeList: List<DiceType> = diceList.map { it.diceType }
     private val diceColorList: List<DiceColor> = listOf(

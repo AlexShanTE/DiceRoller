@@ -18,9 +18,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.alex.sid.shante.diceroller.R
 
 @Composable
 fun CustomButtonWithIcon(
@@ -32,8 +33,7 @@ fun CustomButtonWithIcon(
             .size(canvasSize)
             .drawBehind {
                 buttonBoard(componentSize = size * 0.75f)
-            }
-        ,
+            },
         contentAlignment = Alignment.Center
     ) {
         OutlinedButton(
@@ -48,7 +48,7 @@ fun CustomButtonWithIcon(
         ) {
             Icon(
                 imageVector = Icons.Default.Add,
-                contentDescription = "content description"
+                contentDescription = stringResource(id = R.string.add_dice)
             )
         }
     }
@@ -67,10 +67,4 @@ fun DrawScope.buttonBoard(
         radius = componentSize.height / 2,
         center = Offset(componentSize.width * 0.75f, componentSize.height * 0.675f),
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun CustomButtonPreview() {
-    CustomButtonWithIcon()
 }
