@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -15,6 +15,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -25,7 +26,7 @@ fun GameBoard(
     modifier: Modifier = Modifier,
     gameViewModel: GameViewModel = viewModel(),
     onDiceClicked: (Int) -> Unit,
-    ) {
+) {
     val gameState by gameViewModel.state.collectAsState()
     val diceList = gameState.diceList
 
@@ -47,11 +48,8 @@ fun GameBoard(
             ) { index, dice ->
                 Box(
                     modifier = modifier
-                        .fillMaxWidth()
-                        .height(150.dp)
-                        .clickable {
-                            onDiceClicked(index)
-                        },
+                        .size(LocalConfiguration.current.screenWidthDp.dp/3)
+                        .clickable { onDiceClicked(index) },
                     contentAlignment = Alignment.Center
                 ) {
                     DiceWithImage(
@@ -63,7 +61,7 @@ fun GameBoard(
     }
 }
 
-fun calculateSpan(itemsListSize: Int, indexOfElement: Int): Int {
+private fun calculateSpan(itemsListSize: Int, indexOfElement: Int): Int {
     return when (itemsListSize) {
         1 -> 6
         in 1..3 -> {

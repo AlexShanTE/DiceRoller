@@ -63,16 +63,18 @@ class GameViewModel @Inject constructor(
                 val dice = diceList[index]
                 editDice(
                     index,
-                    dice.copy(
-                        currentValue = (1..dice.imageList.size).random(),
+                    dice.makeCopy(
+                        diceType = dice.diceType,
+                        currentValue = if (dice is Dice.Custom) (1..dice.maxValue).random() else (1..dice.imageList.size).random(),
+                        maxValue = dice.maxValue,
+                        diceColor = dice.diceColor,
+                        diceEdgeColor = dice.diceEdgeColor,
+                        diceDotColor = dice.diceDotColor,
+                        imageList = dice.imageList
                     )
                 )
             }
             .launchIn(viewModelScope) // lifecycleScope or other
-    }
-
-    fun resetGame() {
-        repository.diceList.value
     }
 
     private fun tickerFlow(
