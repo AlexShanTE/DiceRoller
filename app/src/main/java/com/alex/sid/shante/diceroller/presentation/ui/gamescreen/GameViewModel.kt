@@ -5,11 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.alex.sid.shante.diceroller.domain.models.Dice
 import com.alex.sid.shante.diceroller.domain.repositories.GameRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
@@ -58,21 +60,39 @@ class GameViewModel @Inject constructor(
     }
 
     fun rollDice(index: Int) {
-        tickerFlow(period = 50.milliseconds, duration = 1.seconds)
+        var counter = 0
+        tickerFlow(period = 100.milliseconds, duration = 600.milliseconds)
             .onEach { period ->
                 val dice = diceList[index]
+                println(counter)
                 editDice(
                     index,
-                    dice.copy(
-                        currentValue = (1..dice.imageList.size).random(),
+                    dice.makeCopy(
+                        diceType = dice.diceType,
+                        currentValue = generateNewValueOfDice(dice),
+                        maxValue = dice.maxValue,
+                        diceColor = dice.diceColor,
+                        diceEdgeColor = dice.diceEdgeColor,
+                        diceDotColor = dice.diceDotColor,
+                        imageList = dice.imageList
                     )
                 )
+                counter++
             }
-            .launchIn(viewModelScope) // lifecycleScope or other
+            .flowOn(Dispatchers.IO)
+            .launchIn(viewModelScope)
     }
 
-    fun resetGame() {
-        repository.diceList.value
+    private fun generateNewValueOfDice(dice: Dice): Int {
+        val oldValue = dice.currentValue
+        var newValue = dice.currentValue
+        while (newValue == oldValue) {
+            newValue =
+                if (dice is Dice.Custom)
+                    (1..dice.maxValue).random()
+                else (1..dice.imageList.size).random()
+        }
+        return newValue
     }
 
     private fun tickerFlow(

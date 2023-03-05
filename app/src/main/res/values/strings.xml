@@ -13,10 +13,11 @@
     <string name="dice_settings">DiceSettings</string>
     <string name="add_dice">Add Dice</string>
     <string name="type">Type</string>
-    <string name="border_color">Border Color</string>
+    <string name="dice_color">Dice Color</string>
+    <string name="edge_color">Edge Color</string>
     <string name="dot_color">Dot Color</string>
     <string name="remove_dice">Remove dice</string>
     <string name="show_options">Show options</string>
-
+    <string name="max_value">Max Value</string>
 
 </resources>

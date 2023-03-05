@@ -1,6 +1,5 @@
 package com.alex.sid.shante.diceroller.data
 
-import com.alex.sid.shante.diceroller.domain.models.D6
 import com.alex.sid.shante.diceroller.domain.models.Dice
 import com.alex.sid.shante.diceroller.domain.repositories.GameRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,13 +10,13 @@ import kotlinx.coroutines.flow.update
 class GameRepositoryImpl : GameRepository {
 
     private val _diceList: MutableStateFlow<List<Dice>> = MutableStateFlow(
-        listOf(D6(), D6(), D6())
+        listOf(Dice.D6dots(), Dice.D6dots(), Dice.D6dots())
     )
     override val diceList: StateFlow<List<Dice>> = _diceList.asStateFlow()
 
     override fun addDice() {
         _diceList.update {
-            diceList.value.plus(D6())
+            diceList.value.plus(Dice.D6dots())
         }
     }
 
@@ -36,4 +35,5 @@ class GameRepositoryImpl : GameRepository {
             }
         }
     }
+
 }
