@@ -15,8 +15,8 @@ sealed class Dice {
 
     data class D4(
         override val diceType: DiceType = DiceType.D4(),
-        override var currentValue: Int = 1,
-        override var maxValue: Int = 4,
+        override val currentValue: Int = 1,
+        override val maxValue: Int = 4,
         override val diceColor: DiceColor = DiceColor.White(),
         override val diceEdgeColor: DiceEdgeColor = DiceEdgeColor.Black(),
         override val diceDotColor: DiceDotColor = DiceDotColor.Black(),
@@ -33,7 +33,7 @@ sealed class Dice {
 
     data class D6dots(
         override val diceType: DiceType = DiceType.D6dots(),
-        override var currentValue: Int = 1,
+        override val currentValue: Int = 1,
         override val maxValue: Int = 6,
         override val diceColor: DiceColor = DiceColor.White(),
         override val diceEdgeColor: DiceEdgeColor = DiceEdgeColor.Black(),
@@ -53,7 +53,7 @@ sealed class Dice {
 
     data class D6numbers(
         override val diceType: DiceType = DiceType.D6numbers(),
-        override var currentValue: Int = 1,
+        override val currentValue: Int = 1,
         override val maxValue: Int = 6,
         override val diceColor: DiceColor = DiceColor.White(),
         override val diceEdgeColor: DiceEdgeColor = DiceEdgeColor.Black(),
@@ -73,8 +73,8 @@ sealed class Dice {
 
     data class D8(
         override val diceType: DiceType = DiceType.D8(),
-        override var currentValue: Int = 1,
-        override var maxValue: Int = 8,
+        override val currentValue: Int = 1,
+        override val maxValue: Int = 8,
         override val diceColor: DiceColor = DiceColor.White(),
         override val diceEdgeColor: DiceEdgeColor = DiceEdgeColor.Black(),
         override val diceDotColor: DiceDotColor = DiceDotColor.Black(),
@@ -95,7 +95,7 @@ sealed class Dice {
 
     data class D10(
         override val diceType: DiceType = DiceType.D10(),
-        override var currentValue: Int = 1,
+        override val currentValue: Int = 1,
         override val maxValue: Int = 10,
         override val diceColor: DiceColor = DiceColor.White(),
         override val diceEdgeColor: DiceEdgeColor = DiceEdgeColor.Black(),
@@ -119,7 +119,7 @@ sealed class Dice {
 
     data class D12(
         override val diceType: DiceType = DiceType.D12(),
-        override var currentValue: Int = 1,
+        override val currentValue: Int = 1,
         override val maxValue: Int = 12,
         override val diceColor: DiceColor = DiceColor.White(),
         override val diceEdgeColor: DiceEdgeColor = DiceEdgeColor.Black(),
@@ -145,7 +145,7 @@ sealed class Dice {
 
     data class D20(
         override val diceType: DiceType = DiceType.D20(),
-        override var currentValue: Int = 1,
+        override val currentValue: Int = 1,
         override val maxValue: Int = 20,
         override val diceColor: DiceColor = DiceColor.White(),
         override val diceEdgeColor: DiceEdgeColor = DiceEdgeColor.Black(),
@@ -178,7 +178,7 @@ sealed class Dice {
     }
 
     data class Custom(
-        override var currentValue: Int = 1,
+        override val currentValue: Int = 1,
         override val maxValue: Int = 100,
         override val diceType: DiceType = DiceType.Custom(),
         override val diceColor: DiceColor = DiceColor.White(),
@@ -194,8 +194,8 @@ sealed class Dice {
 
 sealed class DiceType(open val title: String) {
     data class D4(override val title: String = "D4") : DiceType(title = title)
-    data class D6dots(override val title: String = "D6 with dots") : DiceType(title = title)
-    data class D6numbers(override val title: String = "D6 with numbers") : DiceType(title = title)
+    data class D6dots(override val title: String = "D6 dotted") : DiceType(title = title)
+    data class D6numbers(override val title: String = "D6 numbered") : DiceType(title = title)
     data class D8(override val title: String = "D8") : DiceType(title = title)
     data class D10(override val title: String = "D10") : DiceType(title = title)
     data class D12(override val title: String = "D12") : DiceType(title = title)

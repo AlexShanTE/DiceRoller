@@ -10,7 +10,7 @@ sealed class DiceDotColor(open val title: String, open val color: Color) {
 
     data class Purple(
         override val title: String = "Purple",
-        override val color: Color = Color(0xFFD900FF)
+        override val color: Color = Color(0xFF823096)
     ) : DiceDotColor(title = title, color = color)
 
     data class Blue(

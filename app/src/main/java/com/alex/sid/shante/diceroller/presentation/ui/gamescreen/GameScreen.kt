@@ -87,20 +87,23 @@ fun GameScreen(
                         diceList = gameState.diceList,
                         onRemoveDiceClicked = { index -> gameViewModel.removeDice(index) },
                         onDiceTypeChanged = { index, type ->
-                            val newDice =
-                                diceSettings.diceList().find { it.diceType == type } ?: Dice.D6dots()
+                            val newDice = diceSettings.diceList().find { it.diceType == type } ?: Dice.D6dots()
                             val oldDice = gameState.diceList[index]
-                            gameViewModel.editDice(
-                                index, newDice.makeCopy(
-                                    diceType = newDice.diceType,
-                                    currentValue = 1,
-                                    maxValue = newDice.maxValue,
-                                    diceColor = oldDice.diceColor,
-                                    diceEdgeColor = oldDice.diceEdgeColor,
-                                    diceDotColor = oldDice.diceDotColor,
-                                    imageList = newDice.imageList
+                            println("NEW DICE TYPE IS ${newDice.diceType.title}")
+                            println("OLD DICE TYPE IS ${oldDice.diceType.title}")
+                            if (newDice.diceType.title !== oldDice.diceType.title) {
+                                gameViewModel.editDice(
+                                    index, newDice.makeCopy(
+                                        diceType = newDice.diceType,
+                                        currentValue = 1,
+                                        maxValue = newDice.maxValue,
+                                        diceColor = oldDice.diceColor,
+                                        diceEdgeColor = oldDice.diceEdgeColor,
+                                        diceDotColor = oldDice.diceDotColor,
+                                        imageList = newDice.imageList
+                                    )
                                 )
-                            )
+                            }
                         },
                         onDiceMaxValueChanged = { index, value ->
                             val dice = gameState.diceList[index]

@@ -17,58 +17,58 @@ sealed class DiceColor(
 
     data class Purple(
         override val title: String = "Purple",
-        override val front: Color = Color(0xFF8D3B8E),
-        override val side: Color = Color(0xFF6F2282),
-        override val back: Color = Color(0xFF692471)
+        override val front: Color = Color(0xFF963B8E),
+        override val side: Color = Color(0xFF7C2572),
+        override val back: Color = Color(0xFF4F1C4C)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class Blue(
         override val title: String = "Blue",
-        override val front: Color = Color(0xFF4957A3),
-        override val side: Color = Color(0xFF314C9B),
-        override val back: Color = Color(0xFF33448F)
+        override val front: Color = Color(0xFF0E85B3),
+        override val side: Color = Color(0xFF235B7C),
+        override val back: Color = Color(0xFF0F3B51)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class DarkBlue(
         override val title: String = "DarkBlue",
-        override val front: Color = Color(0xFF2A3188),
-        override val side: Color = Color(0xFF2B317B),
-        override val back: Color = Color(0xFF2B2F74)
+        override val front: Color = Color(0xFF254B9B),
+        override val side: Color = Color(0xFF223979),
+        override val back: Color = Color(0xFF20284C)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class Aqua(
         override val title: String = "Aqua",
-        override val front: Color = Color(0xFF66B5BE),
-        override val side: Color = Color(0xFF22A7B3),
-        override val back: Color = Color(0xFF00A8BD)
+        override val front: Color = Color(0xFF36B7B6),
+        override val side: Color = Color(0xFF1C9FA3),
+        override val back: Color = Color(0xFF266976)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class LightGreen(
         override val title: String = "LightGreen",
-        override val front: Color = Color(0xFF61B55F),
-        override val side: Color = Color(0xFF37A935),
-        override val back: Color = Color(0xFF3FAB35)
+        override val front: Color = Color(0xFF35A936),
+        override val side: Color = Color(0xFF257D34),
+        override val back: Color = Color(0xFF165226)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class DarkGreen(
         override val title: String = "DarkGreen",
-        override val front: Color = Color(0xFF3A8B48),
-        override val side: Color = Color(0xFF0A7F36),
-        override val back: Color = Color(0xFF1D8135)
+        override val front: Color = Color(0xFF2A8636),
+        override val side: Color = Color(0xFF1B5929),
+        override val back: Color = Color(0xFF132E1B)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class Yellow(
         override val title: String = "Yellow",
-        override val front: Color = Color(0xFFE6CC4E),
-        override val side: Color = Color(0xFFDAC30D),
-        override val back: Color = Color(0xFFDDC124)
+        override val front: Color = Color(0xFFB1B315),
+        override val side: Color = Color(0xFF747C26),
+        override val back: Color = Color(0xFF4E521D)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class Orange(
         override val title: String = "Red",
-        override val front: Color = Color(0xFFE69C45),
-        override val side: Color = Color(0xFFDA7D1A),
-        override val back: Color = Color(0xFFDD6E0F)
+        override val front: Color = Color(0xFFB57F18),
+        override val side: Color = Color(0xFF7F642C),
+        override val back: Color = Color(0xFF543F17)
     ) : DiceColor(title = title, front = front, side = side, back = back)
 
     data class Grey(
