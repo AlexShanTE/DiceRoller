@@ -31,7 +31,6 @@ fun DiceWithImage(
     val diceDotResource =
         if (dice.diceType is DiceType.Custom) 0 else dice.imageList[dice.currentValue - 1]
 
-    //todo setup different dice
     when (dice.diceType) {
         is DiceType.D4 -> {
             Box(modifier = modifier.size(140.dp)) {

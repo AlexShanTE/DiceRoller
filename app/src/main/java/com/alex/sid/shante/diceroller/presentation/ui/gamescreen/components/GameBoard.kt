@@ -48,7 +48,7 @@ fun GameBoard(
             ) { index, dice ->
                 Box(
                     modifier = modifier
-                        .size(LocalConfiguration.current.screenWidthDp.dp/3)
+                        .size(LocalConfiguration.current.screenWidthDp.dp / 3)
                         .clickable { onDiceClicked(index) },
                     contentAlignment = Alignment.Center
                 ) {
