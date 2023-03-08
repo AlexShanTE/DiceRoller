@@ -67,7 +67,7 @@ class GameViewModel @Inject constructor(
             .onEach { period ->
                 val dice = diceList[index]
                 println(counter)
-                editDice(index, dice.сopy(currentValue = generateNewValueOfDice(dice),))
+                editDice(index, dice.makeCopy(currentValue = generateNewValueOfDice(dice),))
                 counter++
             }
             .flowOn(dispatcher)

@@ -92,7 +92,7 @@ fun GameScreen(
                             val oldDice = gameState.diceList[index]
                             if (newDice.diceType.title !== oldDice.diceType.title) {
                                 gameViewModel.editDice(
-                                    index, newDice.сopy(
+                                    index, newDice.makeCopy(
                                         diceType = newDice.diceType,
                                         currentValue = 1,
                                         maxValue = newDice.maxValue,
@@ -104,20 +104,20 @@ fun GameScreen(
                         onDiceMaxValueChanged = { index, value ->
                             val dice = gameState.diceList[index]
                             if (dice.diceType is DiceType.Custom) {
-                                gameViewModel.editDice(index, dice.сopy(currentValue = 1, maxValue = value,))
+                                gameViewModel.editDice(index, dice.makeCopy(currentValue = 1, maxValue = value,))
                             }
                         },
                         onDiceColorChanged = { index, diceColor ->
                             val dice = gameState.diceList[index]
-                            gameViewModel.editDice(index, dice.сopy(diceColor = diceColor,))
+                            gameViewModel.editDice(index, dice.makeCopy(diceColor = diceColor,))
                         },
                         onDiceEdgeColorChanged = { index, diceEdgeColor ->
                             val dice = gameState.diceList[index]
-                            gameViewModel.editDice(index, dice.сopy(diceEdgeColor = diceEdgeColor,))
+                            gameViewModel.editDice(index, dice.makeCopy(diceEdgeColor = diceEdgeColor,))
                         },
                         onDiceDotColorChanged = { index, dotColor ->
                             val dice = gameState.diceList[index]
-                            gameViewModel.editDice(index, dice.сopy(diceDotColor = dotColor))
+                            gameViewModel.editDice(index, dice.makeCopy(diceDotColor = dotColor))
                         }
                     )
                 }

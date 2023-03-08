@@ -11,7 +11,7 @@ sealed class Dice(
     open val diceDotColor: DiceDotColor,
     open val imageList: List<Int>
 ) {
-    fun сopy(
+    fun makeCopy(
         diceType: DiceType = this.diceType,
         currentValue: Int = this.currentValue,
         maxValue: Int = this.maxValue,
@@ -63,7 +63,7 @@ sealed class Dice(
                 diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor,
                 imageList = imageList
             )
-            is Custom -> copy(
+            is Custom -> makeCopy(
                 diceType = diceType, currentValue = currentValue,
                 maxValue = maxValue, diceColor = diceColor,
                 diceEdgeColor = diceEdgeColor, diceDotColor = diceDotColor,
