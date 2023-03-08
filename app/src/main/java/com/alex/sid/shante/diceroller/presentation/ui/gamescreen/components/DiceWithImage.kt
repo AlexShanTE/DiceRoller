@@ -1,8 +1,11 @@
 package com.alex.sid.shante.diceroller.presentation.ui.gamescreen.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
@@ -31,9 +34,11 @@ fun DiceWithImage(
     val diceDotResource =
         if (dice.diceType is DiceType.Custom) 0 else dice.imageList[dice.currentValue - 1]
 
-    when (dice.diceType) {
-        is DiceType.D4 -> {
-            Box(modifier = modifier.size(140.dp)) {
+    Box(
+        modifier = modifier.size(140.dp)
+    ) {
+        when (dice.diceType) {
+            is DiceType.D4 -> {
                 Image(
                     painter = painterResource(id = R.drawable.d4_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -54,10 +59,9 @@ fun DiceWithImage(
                     colorFilter = ColorFilter.tint(dice.diceDotColor.color),
                     contentDescription = null
                 )
+
             }
-        }
-        is DiceType.D6dots -> {
-            Box(modifier = modifier.size(140.dp)) {
+            is DiceType.D6dots -> {
                 Image(
                     painter = painterResource(id = R.drawable.d6_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -84,9 +88,7 @@ fun DiceWithImage(
                     contentDescription = null
                 )
             }
-        }
-        is DiceType.D6numbers -> {
-            Box(modifier = modifier.size(140.dp)) {
+            is DiceType.D6numbers -> {
                 Image(
                     painter = painterResource(id = R.drawable.d6_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -112,10 +114,9 @@ fun DiceWithImage(
                     colorFilter = ColorFilter.tint(dice.diceDotColor.color),
                     contentDescription = null
                 )
+
             }
-        }
-        is DiceType.D8 -> {
-            Box(modifier = modifier.size(140.dp)) {
+            is DiceType.D8 -> {
                 Image(
                     painter = painterResource(id = R.drawable.d8_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -142,9 +143,7 @@ fun DiceWithImage(
                     contentDescription = null
                 )
             }
-        }
-        is DiceType.D10 -> {
-            Box(modifier = modifier.size(140.dp)) {
+            is DiceType.D10 -> {
                 Image(
                     painter = painterResource(id = R.drawable.d10_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -171,9 +170,7 @@ fun DiceWithImage(
                     contentDescription = null
                 )
             }
-        }
-        is DiceType.D12 -> {
-            Box(modifier = modifier.size(140.dp)) {
+            is DiceType.D12 -> {
                 Image(
                     painter = painterResource(id = R.drawable.d12_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -200,9 +197,7 @@ fun DiceWithImage(
                     contentDescription = null
                 )
             }
-        }
-        is DiceType.D20 -> {
-            Box(modifier = modifier.size(140.dp)) {
+            is DiceType.D20 -> {
                 Image(
                     painter = painterResource(id = R.drawable.d20_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -229,12 +224,7 @@ fun DiceWithImage(
                     contentDescription = null
                 )
             }
-        }
-        is DiceType.Custom -> {
-            Box(
-                modifier = modifier.size(140.dp),
-                contentAlignment = Alignment.Center
-            ) {
+            is DiceType.Custom -> {
                 Image(
                     painter = painterResource(id = R.drawable.d_custom_edge),
                     colorFilter = ColorFilter.tint(dice.diceEdgeColor.color),
@@ -255,30 +245,35 @@ fun DiceWithImage(
                     colorFilter = ColorFilter.tint(dice.diceColor.front),
                     contentDescription = null
                 )
-                Column(
-                    modifier = modifier,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                Box(
+                    modifier = modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        modifier = modifier.height(18.dp),
-                        textAlign = TextAlign.Center,
-                        text = "D${dice.maxValue}",
-                        fontFamily = minionVariableConcept,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp,
-                        color = dice.diceDotColor.color
-                    )
-                    Text(
-                        modifier = modifier,
-                        textAlign = TextAlign.Start,
-                        text = dice.currentValue.toString(),
-                        fontFamily = minionVariableConcept,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 40.sp,
-                        color = dice.diceDotColor.color
-                    )
+                    Column(
+                        modifier = modifier.fillMaxHeight(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            modifier = modifier.height(18.dp),
+                            textAlign = TextAlign.Center,
+                            text = "D${dice.maxValue}",
+                            fontFamily = minionVariableConcept,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            color = dice.diceDotColor.color
+                        )
+                        Text(
+                            modifier = modifier,
+                            textAlign = TextAlign.Start,
+                            text = dice.currentValue.toString(),
+                            fontFamily = minionVariableConcept,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 40.sp,
+                            color = dice.diceDotColor.color
+                        )
+                    }
                 }
-
             }
         }
     }

@@ -50,7 +50,7 @@ fun GameBoard(
                     modifier = modifier
                         .size(LocalConfiguration.current.screenWidthDp.dp / 3)
                         .clickable { onDiceClicked(index) },
-                    contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.Center,
                 ) {
                     DiceWithImage(
                         dice = diceList[index]
