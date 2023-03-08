@@ -33,6 +33,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.alex.sid.shante.diceroller.R
 import com.alex.sid.shante.diceroller.domain.models.Dice
 import com.alex.sid.shante.diceroller.domain.models.DiceSettings
+import com.alex.sid.shante.diceroller.domain.models.DiceType
 import com.alex.sid.shante.diceroller.presentation.ui.common.GradientButton
 import com.alex.sid.shante.diceroller.presentation.ui.gamescreen.components.GameBoard
 import com.alex.sid.shante.diceroller.presentation.ui.gamescreen.diceSettingsDrawer.DrawerBody
@@ -87,18 +88,14 @@ fun GameScreen(
                         diceList = gameState.diceList,
                         onRemoveDiceClicked = { index -> gameViewModel.removeDice(index) },
                         onDiceTypeChanged = { index, type ->
-                            val newDice = diceSettings.diceList().find { it.diceType == type }
-                                ?: Dice.D6dots()
+                            val newDice: Dice = diceSettings.diceList().find { it.diceType == type } ?: Dice.D6dots()
                             val oldDice = gameState.diceList[index]
                             if (newDice.diceType.title !== oldDice.diceType.title) {
                                 gameViewModel.editDice(
-                                    index, newDice.makeCopy(
+                                    index, newDice.сopy(
                                         diceType = newDice.diceType,
                                         currentValue = 1,
                                         maxValue = newDice.maxValue,
-                                        diceColor = oldDice.diceColor,
-                                        diceEdgeColor = oldDice.diceEdgeColor,
-                                        diceDotColor = oldDice.diceDotColor,
                                         imageList = newDice.imageList
                                     )
                                 )
@@ -106,62 +103,21 @@ fun GameScreen(
                         },
                         onDiceMaxValueChanged = { index, value ->
                             val dice = gameState.diceList[index]
-                            if (dice is Dice.Custom) {
-                                gameViewModel.editDice(
-                                    index,
-                                    dice.makeCopy(
-                                        diceType = dice.diceType,
-                                        currentValue = 1,
-                                        maxValue = value,
-                                        diceColor = dice.diceColor,
-                                        diceEdgeColor = dice.diceEdgeColor,
-                                        diceDotColor = dice.diceDotColor,
-                                        imageList = dice.imageList
-                                    )
-                                )
+                            if (dice.diceType is DiceType.Custom) {
+                                gameViewModel.editDice(index, dice.сopy(currentValue = 1, maxValue = value,))
                             }
                         },
                         onDiceColorChanged = { index, diceColor ->
                             val dice = gameState.diceList[index]
-                            gameViewModel.editDice(
-                                index, dice.makeCopy(
-                                    diceType = dice.diceType,
-                                    currentValue = dice.currentValue,
-                                    maxValue = dice.maxValue,
-                                    diceColor = diceColor,
-                                    diceEdgeColor = dice.diceEdgeColor,
-                                    diceDotColor = dice.diceDotColor,
-                                    imageList = dice.imageList
-                                )
-                            )
+                            gameViewModel.editDice(index, dice.сopy(diceColor = diceColor,))
                         },
                         onDiceEdgeColorChanged = { index, diceEdgeColor ->
                             val dice = gameState.diceList[index]
-                            gameViewModel.editDice(
-                                index, dice.makeCopy(
-                                    diceType = dice.diceType,
-                                    currentValue = dice.currentValue,
-                                    maxValue = dice.maxValue,
-                                    diceColor = dice.diceColor,
-                                    diceEdgeColor = diceEdgeColor,
-                                    diceDotColor = dice.diceDotColor,
-                                    imageList = dice.imageList
-                                )
-                            )
+                            gameViewModel.editDice(index, dice.сopy(diceEdgeColor = diceEdgeColor,))
                         },
                         onDiceDotColorChanged = { index, dotColor ->
                             val dice = gameState.diceList[index]
-                            gameViewModel.editDice(
-                                index, dice.makeCopy(
-                                    diceType = dice.diceType,
-                                    currentValue = dice.currentValue,
-                                    maxValue = dice.maxValue,
-                                    diceColor = dice.diceColor,
-                                    diceEdgeColor = dice.diceEdgeColor,
-                                    diceDotColor = dotColor,
-                                    imageList = dice.imageList
-                                )
-                            )
+                            gameViewModel.editDice(index, dice.сopy(diceDotColor = dotColor))
                         }
                     )
                 }
